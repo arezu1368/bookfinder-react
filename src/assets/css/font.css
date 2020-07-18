@@ -1,0 +1,40 @@
+﻿@font-face {
+  font-family: 'Yekan';
+  font-display: fallback;
+  src: url(../fonts/webyekan/Yekan.eot) format('eot'),
+  url(../fonts/webyekan/Yekan.eot?#) format('eot');
+  src: url(../fonts/webyekan/Yekan.woff) format('woff'),
+  url(../fonts/webyekan/Yekan.ttf) format('truetype');
+}
+
+@font-face{
+  font-family:'YekanN';
+  font-display: fallback;
+  src:url(../fonts/webyekan/yekannumbers-regular.eot);
+  src:url(../fonts/webyekan/yekannumbers-regular.eot?#iefix) format("embedded-opentype"),
+  url(../fonts/webyekan/yekannumbers-regular.woff) format("woff"),
+  url(../fonts/webyekan/yekannumbers-regular.ttf) format("truetype");
+  font-weight:400;
+  font-style:normal
+}
+
+@font-face {
+  font-family: 'nastaliq';
+  font-display: fallback;
+  src: url(../fonts/irannastaliq/irannastaliq-webfont.eot) format('eot');
+  src: url(../fonts/irannastaliq/irannastaliq-webfont.woff) format('woff'),
+    url(../fonts/irannastaliq/irannastaliq-webfont.woff2) format('woff2'),
+    url(../fonts/irannastaliq/irannastaliq-webfont.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Arabic Kufi';
+  font-display: fallback;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/droid-arabic-kufi/DroidKufi-Regular.eot),
+  url(../fonts/droid-arabic-kufi/DroidKufi-Regular.eot?#iefix) format('embedded-opentype');
+  src: url(../fonts/droid-arabic-kufi/DroidKufi-Regular.woff2) format('woff2'),
+  url(../fonts/droid-arabic-kufi/DroidKufi-Regular.woff) format('woff'),
+  url(../fonts/droid-arabic-kufi/DroidKufi-Regular.ttf) format('truetype');
+}

@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from "./components/Header/Header";
+import loading from "./assets/images/Curve-Loading.gif";
+import Home from './components/Home/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component<IAppProps,IAppState> {
+    constructor(props: IAppProps) {
+        super(props);
+        this.state = { isLoading: true }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({isLoading: false})
+        }, 2000);
+
+    }
+    render() {
+        if (this.state.isLoading) {
+            return (
+                <div className="loading-holder">
+                    <img className="loading-img" src={loading} alt="loading"/>
+                </div>
+            );
+        } else {
+            return(
+                <div>
+                <Header />
+                <main>
+                <Home />
+                </main>
+                </div>
+      
+            );
+
+        }
+    }
 }
-
 export default App;
+
+interface IAppProps {}
+interface IAppState {
+    isLoading: boolean;
+}
