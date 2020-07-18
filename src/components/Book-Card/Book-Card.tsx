@@ -9,7 +9,10 @@ class BookCard extends Component<IBookCardProps,{}> {
         super(props)
     }
     get authors(): string {
-        return this.props.volumeInfo.authors.toString();
+        if(this.props.volumeInfo !== undefined && this.props.volumeInfo.authors!== undefined) {
+            return this.props.volumeInfo.authors.toString();
+        } 
+        return '';
     }
     render() {
         let imgSrc: string;
