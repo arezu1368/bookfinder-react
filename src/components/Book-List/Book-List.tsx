@@ -24,9 +24,10 @@ class BookList extends Component<IBookListProps,IBookListState> {
     }
     componentWillReceiveProps(nextProps: IBookListProps) {
         this.setState({resultItems:[]})
-        if (nextProps.keyValue !== this.props.keyValue) {
-            this.search(nextProps.keyValue);
-         }
+        // if (nextProps.keyValue !== this.props.keyValue) {
+          
+        //  }
+         this.search(nextProps.keyValue);
     }
     render() {
         return (

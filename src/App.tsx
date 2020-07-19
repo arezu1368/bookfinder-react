@@ -14,13 +14,12 @@ class App extends Component<IAppProps,IAppState> {
     }
     searchClick = (keyVal:string) => {
         this.setState({key: keyVal});
-        console.log('hi');
     }
 
     componentDidMount() {
         setTimeout(() => {
             this.setState({isLoading: false})
-        }, 2000);
+        }, 1000);
     }
     render() {
         if (this.state.isLoading) {
