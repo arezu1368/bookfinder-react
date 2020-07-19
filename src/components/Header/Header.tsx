@@ -3,7 +3,19 @@ import './Header.scss'
 import logo from '../../assets/images/book-finder2.png'
 import searchImage from '../../assets/images/search-icon.png'
 
-export class Header extends Component {
+export class Header extends Component<IHeaderProps,IHeaderState> {
+    constructor(props:IHeaderProps) {
+        super(props)
+        this.state = {key: ''}
+    }
+    onSubmit = (e:any) => {
+        e.preventDefault();
+        this.props.searchClick(this.state.key);
+    }
+    onChange = (e:any) => {
+        const newState = { [e.target.name]: e.target.value } as Pick<IHeaderState, keyof IHeaderState>;
+        this.setState(newState);
+    }
     render() {
         return (
             <header>
@@ -20,11 +32,11 @@ export class Header extends Component {
                </h1>
                <div className="search-container">
                    <div  className="search-fields">
-                       <form  id="search-form" className="search-form">
-                           <input  id="key" name="key"
+                       <form  onSubmit={this.onSubmit} id="search-form" className="search-form">
+                           <input  id="key" name="key" value = {this.state.key} onChange = {this.onChange}
                                   placeholder="جستجو بر اساس عنوان ،نویسنده،..."/>
                            <input type="submit" value="submit" hidden/>
-                           <i id="search-btn"  className="material-icons search-icon">search</i>
+                           <i id="search-btn" onClick={this.props.searchClick.bind(this,this.state.key)}  className="material-icons search-icon">search</i>
                        </form>
                    </div>
 
@@ -35,5 +47,10 @@ export class Header extends Component {
         )
     }
 }
-
+interface IHeaderProps{
+    searchClick: any;
+}
+interface IHeaderState{
+    key: string
+}
 export default Header

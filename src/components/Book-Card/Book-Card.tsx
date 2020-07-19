@@ -15,10 +15,11 @@ class BookCard extends Component<IBookCardProps,{}> {
         return '';
     }
     render() {
+        const {title,imageLinks,publisher,publishedDate} = this.props.volumeInfo;
         let imgSrc: string;
         const stringUtils = new StringUtils();
-        if(this.props.volumeInfo.imageLinks !== undefined) {
-            imgSrc = this.props.volumeInfo.imageLinks.thumbnail;
+        if(imageLinks !== undefined) {
+            imgSrc = imageLinks.thumbnail;
             if(imgSrc === undefined) {
                 imgSrc = noImage;
             }
@@ -28,15 +29,15 @@ class BookCard extends Component<IBookCardProps,{}> {
         return (
             <div className="book-card">
             <div className="book-img">
-              <img src={imgSrc} alt={this.props.volumeInfo.title} />
+              <img src={imgSrc} alt={title} />
             </div>
             <div className="book-infoes">
-              <h1 className="book-title">{stringUtils.truncate(this.props.volumeInfo.title,50)}</h1>
-                { this.props.volumeInfo.publishedDate !== undefined ?
+              <h1 className="book-title">{stringUtils.truncate(title,50)}</h1>
+                {publishedDate !== undefined ?
                         <div className="info-item">
                         <span className='info-title'>تاریخ انتشار:</span>
                         <span className="publish-date">
-                          {this.props.volumeInfo.publishedDate}
+                          {publishedDate}
                         </span>
                        </div> : ''}
                 { this.authors !== undefined ?

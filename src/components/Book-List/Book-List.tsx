@@ -11,29 +11,41 @@ class BookList extends Component<IBookListProps,IBookListState> {
             resultItems: []
         }
     }
-    componentDidMount() {
+    search = (key: string) => {
         const bookServices = new  BookServices();
-        const res = bookServices.search("شریعتی");
+        const res = bookServices.search(key);
         res.then((data)=> {
-           this.setState({resultItems: data.items});
-           console.log(this.state.resultItems);
-        })
+            this.setState({resultItems: data.items});
+            console.log(this.state.resultItems);
+         })
+    }
+    componentDidMount() {
+       this.search(this.props.keyValue);
+    }
+    componentWillReceiveProps(nextProps: IBookListProps) {
+        this.setState({resultItems:[]})
+        if (nextProps.keyValue !== this.props.keyValue) {
+            this.search(nextProps.keyValue);
+         }
     }
     render() {
         return (
             <div className="list-items" id="list-items">
-            {this.state.resultItems.map (item=> {
+            { this.state.resultItems !== undefined ?
+                this.state.resultItems.map (item=> {
                 return(
                     <BookCard volumeInfo = {item.volumeInfo} />
-                )  
-                
-              })}
+                )     
+              }) : ''
+            
+            }
             </div>
            
             )
     }
 }
 interface IBookListProps {
+    keyValue: string
 }
 interface IBookListState {
     resultItems: ResultItem[];
