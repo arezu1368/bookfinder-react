@@ -71,7 +71,8 @@ input{
     box-shadow: 1px 1px 2px #eee;
     width: 100%;
 }
-.search-container .search-icon{
+.search-container{ 
+    .search-icon{
     position: absolute;
     color: #333;
     cursor: pointer;
@@ -81,10 +82,10 @@ input{
     background: transparent;
     border:none;
     outline:0px !important;
-}
-
-.search-container .search-icon:hover{
-    color: #188480;
+    &:hover {
+        color: #188480;
+    }
+    }
 }
 @media screen and (max-width: 991px) {
 
