@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header/Header";
 import loading from "./assets/images/Curve-Loading.gif";
 import Home from './components/Home/Home';
+import { MessageBox } from './components/Message-Box/Message-Box';
 
 
 class App extends Component<IAppProps,IAppState> {

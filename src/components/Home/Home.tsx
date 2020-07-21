@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BookList from '../Book-List/Book-List'
+import MessageBox from '../Message-Box/Message-Box';
 
 export class Home extends Component<IHomeProps> {
   constructor(props:IHomeProps){
@@ -12,10 +13,11 @@ export class Home extends Component<IHomeProps> {
     }
    }
   render() {
-        if(this.props.keyValue !== undefined && this.props.keyValue.length > 0){
-          return (<BookList keyValue = {this.props.keyValue}/>)
-        }
-        return (<div></div>)
+        return (       
+          <BookList keyValue = {this.props.keyValue}/>
+          
+        )
+     
     }
 }
 interface IHomeProps {
