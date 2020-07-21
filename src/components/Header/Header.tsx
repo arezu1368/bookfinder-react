@@ -17,9 +17,7 @@ export class Header extends Component<IHeaderProps,IHeaderState> {
             this.setState({isEmptyKey : false})
             this.props.searchClick(this.state.key);
         } else {
-            alert('not');
             this.setState({isEmptyKey : true})
-            alert(this.state.isEmptyKey);
         }
     }
     onSubmit = (e:any) => {
