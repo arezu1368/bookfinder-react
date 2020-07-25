@@ -14,8 +14,7 @@ export class Home extends Component<IHomeProps> {
    }
   render() {
         return (       
-          <BookList keyValue = {this.props.keyValue}/>
-          
+          <BookList keyValue = {this.props.keyValue}/> 
         )
      
     }

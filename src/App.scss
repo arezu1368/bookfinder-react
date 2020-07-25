@@ -1,0 +1,17 @@
+@import './assets/scss/animations';
+*{
+  margin: 0;
+  padding: 0;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.loading-holder{
+  text-align: center;
+}
+.loading-img{
+  margin: 0 auto;
+  max-width: 100%;
+}

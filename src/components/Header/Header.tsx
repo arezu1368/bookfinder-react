@@ -13,12 +13,13 @@ export class Header extends Component<IHeaderProps,IHeaderState> {
     }
     }
     search = () => {
+
         if(!isNullOrUndefined(this.state.key) && this.state.key.length>0) {
             this.setState({isEmptyKey : false})
-            this.props.searchClick(this.state.key);
         } else {
             this.setState({isEmptyKey : true})
         }
+        this.props.searchClick(this.state.key);
     }
     onSubmit = (e:any) => {
         e.preventDefault();
@@ -59,10 +60,7 @@ export class Header extends Component<IHeaderProps,IHeaderState> {
            {
             this.state.isEmptyKey && 
             <MessageBox messageType = {emptyMessageType} messageText = {emptyMessageText} />
-              }   
-          )
-
-            
+              }    
        </header>
         )
     }

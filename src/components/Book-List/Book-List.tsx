@@ -11,22 +11,24 @@ class BookList extends Component<IBookListProps,IBookListState> {
     constructor(props: IBookListProps) {
         super(props)
         this.state = {
-            resultItems: []
+            resultItems: [],
+            isEmptyList: false,
+            isWaiting: false
         }
     }
-    isShowMessage = false;
-    isEmptyList = false;
+
     search = (key: string) => {
-        this.setState({resultItems: []})
+        this.setState({resultItems: [],isEmptyList: false,isWaiting:true})
         if(!isNullOrUndefined(key) && key.length>0)
         {
-            this.isEmptyList = false;
             const bookServices = new  BookServices();
             const res = bookServices.search(key);
             res.then((data)=> {
                 const items = data.items;
-                items !== undefined ? this.setState({resultItems: items}) : this.isEmptyList = true
+                !isNullOrUndefined(items) ? this.setState({resultItems: items,isWaiting:false}) : this.setState({resultItems:[], isWaiting:false,isEmptyList: true})
              })
+        } else {
+            this.setState({isWaiting: false})
         }
     }
     componentDidMount() {  
@@ -38,18 +40,26 @@ class BookList extends Component<IBookListProps,IBookListState> {
     }
     render() {
         return (
-        <div>
+        <div> 
+            <div>         
+             {
+                 this.state.isWaiting && <div id="search-waiting"><img src={searchWaiting} alt="waiting" /></div>            
+             }
+             {
+                this.state.isEmptyList && <div id="empty-list" className="empty-list"><span> هیچ کتابی جهت نمایش مطابق با عبارت وارد شده،وجود ندارد. </span></div>
+             }
+            </div> 
             <div className="list-items" id="list-items">
-            { this.state.resultItems !== undefined && this.state.resultItems.length>0 ?
+            { !isNullOrUndefined(this.state.resultItems) ?
                 this.state.resultItems.map (item=> {
                 return(
-                    <BookCard volumeInfo = {item.volumeInfo} />
+                    <BookCard key={item.id} volumeInfo = {item.volumeInfo} />
                 )     
               }) : ''
             
             }
             </div>
-        </div>  
+           </div>  
             )
     }
 }
@@ -58,5 +68,8 @@ interface IBookListProps {
 }
 interface IBookListState {
     resultItems: ResultItem[];
+    isEmptyList :boolean;
+    isWaiting: boolean;
+    
 }
 export default  BookList
