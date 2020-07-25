@@ -40,15 +40,13 @@ class BookList extends Component<IBookListProps,IBookListState> {
     }
     render() {
         return (
-        <div> 
-            <div>         
-             {
-                 this.state.isWaiting && <div id="search-waiting"><img src={searchWaiting} alt="waiting" /></div>            
-             }
-             {
-                this.state.isEmptyList && <div id="empty-list" className="empty-list"><span> هیچ کتابی جهت نمایش مطابق با عبارت وارد شده،وجود ندارد. </span></div>
-             }
-            </div> 
+        <section className="list-sec"> 
+            {
+                this.state.isWaiting && <div id="search-waiting"><img src={searchWaiting} alt="waiting" /></div>            
+            }
+            {
+                this.state.isEmptyList && <div id="empty-list" className="empty-list"><div className="empty-text"> هیچ کتابی جهت نمایش مطابق با عبارت وارد شده،وجود ندارد. </div></div>
+            }
             <div className="list-items" id="list-items">
             { !isNullOrUndefined(this.state.resultItems) ?
                 this.state.resultItems.map (item=> {
@@ -59,7 +57,7 @@ class BookList extends Component<IBookListProps,IBookListState> {
             
             }
             </div>
-           </div>  
+           </section>  
             )
     }
 }

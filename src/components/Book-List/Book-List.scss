@@ -8,20 +8,22 @@
 .empty-list {
     flex-basis: 100%;
     text-align: center;
-    margin: 70px;
+    margin: 50px auto;
     font-weight: 600;
     font-size: 1rem;
     animation: fadein 2s linear;
     direction: rtl;
+    .empty-text{
+        color: darkorange;
+        padding: 25px 30px;
+        border-radius: 10px;
+        direction: rtl;
+        background: #f7f7f7;
+        box-shadow: 1px 2px 8px #ccc;
+        line-height: 2;
+    }
 }
-.empty-list span{
-    color: darkorange;
-    padding: 30px 30px;
-    border-radius: 10px;
-    direction: rtl;
-    background: #f7f7f7;
-    box-shadow: 1px 2px 8px #ccc;
-}
+
 #search-waiting{
     text-align: center;
     flex-basis: 100%;
