@@ -9,17 +9,20 @@ export class Header extends Component<IHeaderProps,IHeaderState> {
     constructor(props:IHeaderProps) {
         super(props)
         this.state = {key: '',
-        isEmptyKey: false
+        isShowEmptyMsg: false
     }
     }
     search = () => {
 
         if(!isNullOrUndefined(this.state.key) && this.state.key.length>0) {
-            this.setState({isEmptyKey : false})
+            this.setState({isShowEmptyMsg : false})
         } else {
-            this.setState({isEmptyKey : true})
+            this.setState({isShowEmptyMsg : true})
         }
         this.props.searchClick(this.state.key);
+    }
+    hideMsg= () => {
+        this.setState({isShowEmptyMsg: false});
     }
     onSubmit = (e:any) => {
         e.preventDefault();
@@ -58,8 +61,8 @@ export class Header extends Component<IHeaderProps,IHeaderState> {
                </div>
            </div>
            {
-            this.state.isEmptyKey && 
-            <MessageBox messageType = {emptyMessageType} messageText = {emptyMessageText} />
+            this.state.isShowEmptyMsg && 
+            <MessageBox  hideMsg = {this.hideMsg} messageType = {emptyMessageType} messageText = {emptyMessageText} />
               }    
        </header>
         )
@@ -70,6 +73,6 @@ interface IHeaderProps{
 }
 interface IHeaderState{
     key: string,
-    isEmptyKey: boolean
+    isShowEmptyMsg: boolean
 }
 export default Header
